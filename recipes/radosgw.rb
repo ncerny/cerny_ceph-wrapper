@@ -16,4 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+httpd_service 'default' do
+  action [:create, :start]
+end
+
 include_recipe 'ceph::radosgw'
