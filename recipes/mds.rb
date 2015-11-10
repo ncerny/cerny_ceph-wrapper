@@ -16,4 +16,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ceph_pool 'cephfs_data' do
+  pg_num 768
+end
+
+ceph_pool 'cephfs_metadata' do
+  pg_num 128
+end
+
+execute 'ceph fs new cephfs cephfs_metadata cephfs_data' do
+  only_if { 'ceph fs ls | grep "No filesystems enabled"' }
+end
+
 include_recipe 'ceph::mds'

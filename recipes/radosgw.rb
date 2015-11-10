@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: cerny_ceph
-# Recipe:: mon
+# Recipe:: radosgw
 #
 # Copyright 2015 Nathan Cerny
 #
@@ -16,8 +16,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'ceph::mon'
-
-ceph_pool 'rbd' do
-  pg_num 128
-end
+include_recipe 'ceph::radosgw'
