@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: cerny_ceph
-# Recipe:: osd
+# Recipe:: _firewall
 #
 # Copyright 2015 Nathan Cerny
 #
@@ -16,9 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-execute 'tuned-adm profile latency-performance' do
-  not_if 'tuned-adm active | grep latency-performance'
-end
+include_recipe 'firewalld'
 
-include_recipe 'cerny_ceph::_firewall'
-include_recipe 'ceph::osd'
+firewalld_port '6800-7300/tcp' do
+  zone 'internal'
+  notifies :reload, 'service[firewalld]', :delayed
+end

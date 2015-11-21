@@ -16,4 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe 'firewalld'
+
+firewalld_port '80/tcp' do
+  zone 'public'
+  notifies :reload, 'service[firewalld]', :delayed
+end
+
 include_recipe 'ceph::radosgw'
