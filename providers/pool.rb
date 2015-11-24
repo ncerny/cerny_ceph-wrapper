@@ -34,7 +34,7 @@ action :create do
         set_pg_num
       end
     end
-    while get_pgp_num != @new_resource.pg_num
+    while get_pgp_num(@new_resource.name) != @new_resource.pg_num
       converge_by("Setting pgp_num for #{@new_resource}") do
         set_pgp_num
       end
