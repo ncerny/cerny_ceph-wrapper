@@ -31,4 +31,3 @@ attribute :create_options, kind_of: String
 attribute :force, kind_of: [TrueClass, FalseClass], default: false
 
 attr_accessor :exists
-attr_accessor :pg_num
