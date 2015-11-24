@@ -26,5 +26,5 @@ end
 include_recipe 'ceph::mon'
 
 ceph_pool 'rbd' do
-  pg_num 128
+  pg_num 256
 end
