@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: cerny_ceph
-# Recipe:: mon
+# Resource:: pool
 #
 # Copyright 2015 Nathan Cerny
 #
@@ -16,15 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'firewalld'
+actions :create, :delete
+default_action :create
 
-firewalld_port '6789/tcp' do
-  zone 'internal'
-  notifies :reload, 'service[firewalld]', :delayed
-end
+attribute :name, kind_of: String, name_attribute: true
 
-include_recipe 'ceph::mon'
+# The total number of placement groups for the pool.
+attribute :pg_num, kind_of: Integer, required: true
 
-cerny_ceph_pool 'rbd' do
-  pg_num 256
-end
+# Optional arguments for pool creation
+attribute :create_options, kind_of: String
+
+# Forces a non-empty pool to be deleted.
+attribute :force, kind_of: [TrueClass, FalseClass], default: false
+
+attr_accessor :exists
+attr_accessor :pg_num

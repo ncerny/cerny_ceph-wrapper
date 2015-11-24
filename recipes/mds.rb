@@ -18,11 +18,11 @@
 
 include_recipe 'cerny_ceph::_firewall'
 
-ceph_pool 'cephfs_data' do
+cerny_ceph_pool 'cephfs_data' do
   pg_num 768
 end
 
-ceph_pool 'cephfs_metadata' do
+cerny_ceph_pool 'cephfs_metadata' do
   pg_num 128
 end
 
