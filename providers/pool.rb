@@ -103,14 +103,14 @@ def get_pg_num(name)
   cmd = Mixlib::ShellOut.new("ceph osd pool get #{name} pg_num")
   cmd.run_command
   cmd.error!
-  cmd.stdout.split(' ')[1]
+  cmd.stdout.split(' ')[1].to_i
 end
 
 def get_pgp_num(name)
   cmd = Mixlib::ShellOut.new("ceph osd pool get #{name} pgp_num")
   cmd.run_command
   cmd.error!
-  cmd.stdout.split(' ')[1]
+  cmd.stdout.split(' ')[1].to_i
 end
 
 def pool_exists?(name)
