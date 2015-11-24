@@ -4,5 +4,4 @@ default['ceph']['radosgw']['api_fqdn'] = 'ceph.internal.cerny.cc'
 default['ceph']['radosgw']['admin_email'] = 'ncerny@gmail.com'
 default['ceph']['radosgw']['rgw_addr'] = '*:80'
 default['ceph']['radosgw']['rgw_port'] = false
-#default['ceph']['radosgw']['apache2']['packages'] = ['fcgi']
-default['ceph']['radosgw']['webserver_companion'] = 'civetweb' # can be civetweb or false
+default['ceph']['radosgw']['webserver_companion'] = 'civetweb'

@@ -57,6 +57,8 @@ def load_current_resource
   @current_resource = Chef::Resource::CephPool.new(@new_resource.name)
   @current_resource.name(@new_resource.name)
   @current_resource.exists = pool_exists?(@current_resource.name)
+  Chef::Log.info "Current Resource: #{@current_resource.pg_num}"
+  Chef::Log.info "New Resource: #{@new_resource.pg_num}"
 end
 
 def create_pool
@@ -97,8 +99,9 @@ end
 def pool_exists?(name)
   cmd = Mixlib::ShellOut.new("ceph osd pool get #{name} pg_num")
   cmd.run_command
-  cmd.error!
   @current_resource.pg_num = cmd.stdout.split(' ')[1]
+  Chef::Log.info "Pool exists: pg_num #{cmd.stdout}"
+  cmd.error!
   Chef::Log.debug "Pool exists: #{cmd.stdout}"
   true
 rescue
