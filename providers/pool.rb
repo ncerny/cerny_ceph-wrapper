@@ -57,7 +57,7 @@ action :delete do
 end
 
 def load_current_resource
-  @current_resource = Chef::Resource::CephPool.new(@new_resource.name)
+  @current_resource = Chef::Resource::CernyCephPool.new(@new_resource.name)
   @current_resource.name(@new_resource.name)
   @current_resource.exists = pool_exists?(@current_resource.name)
   @current_resource.pg_num = get_pg_num(@current_resource.name) || 0
