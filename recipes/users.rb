@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: cerny_ceph
-# Recipe:: default
+# Recipe:: users
 #
 # Copyright 2015 Nathan Cerny
 #
@@ -16,9 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'cerny_common'
+group 'ceph'
 
-include_recipe 'cerny_ceph::mon'
-include_recipe 'cerny_ceph::osd'
-include_recipe 'cerny_ceph::mds'
-include_recipe 'cerny_ceph::users'
+user 'nathan' do
+  shell '/bin/bash'
+  group 'ceph'
+end
+
+file '/etc/ceph/ceph.client.admin.keyring' do
+  user 'root'
+  group 'ceph'
+  mode '0640'
+end
