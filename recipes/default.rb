@@ -17,6 +17,7 @@
 # limitations under the License.
 
 include_recipe 'cerny_common'
+include_recipe 'cerny_ceph::_sysctl'
 
 include_recipe 'cerny_ceph::mon'
 include_recipe 'cerny_ceph::osd'
