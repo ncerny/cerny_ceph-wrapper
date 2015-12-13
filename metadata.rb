@@ -4,7 +4,7 @@ maintainer_email 'ncerny@gmail.com'
 license 'apache2'
 description 'Installs/Configures cerny_ceph'
 long_description 'Installs/Configures cerny_ceph'
-version '0.7.12'
+version '0.7.16'
 
 supports 'redhat', '>= 7.0.0'
 

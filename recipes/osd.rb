@@ -16,8 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-execute 'tuned-adm profile latency-performance' do
-  not_if 'tuned-adm active | grep latency-performance'
+execute 'tuned-adm profile network-latency' do
+  not_if 'tuned-adm active | grep network-latency'
 end
 
 include_recipe 'cerny_ceph::_firewall'
